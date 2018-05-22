@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>bel.sigursoft</groupId>
+  <artifactId>hammock-infinispan-example</artifactId>
+  <packaging>jar</packaging>
+  <version>dev</version>
+  <name>hammock-infinispan-example</name>
+
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <hammock.version>2.1</hammock.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <path.to.compiler>C:\Program Files\Java\jdk1.8.0_172\bin\javac.exe</path.to.compiler>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jboss.logging</groupId>
+      <artifactId>jboss-logging</artifactId>
+      <version>3.3.0.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>ws.ament.hammock</groupId>
+      <artifactId>web-undertow</artifactId>
+      <version>${hammock.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ws.ament.hammock</groupId>
+      <artifactId>rest-resteasy</artifactId>
+      <version>${hammock.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ws.ament.hammock</groupId>
+      <artifactId>bootstrap-weld3</artifactId>
+      <version>${hammock.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss</groupId>
+      <artifactId>jandex</artifactId>
+      <version>2.0.5.Final</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.github.chrisdchristo</groupId>
+        <artifactId>capsule-maven-plugin</artifactId>
+        <version>1.5.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>build</goal>
+            </goals>
+            <configuration>
+              <appClass>ws.ament.hammock.Bootstrap</appClass>
+              <type>fat</type>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.7.0</version>
+        <configuration>
+          <fork>true</fork>
+          <executable>${path.to.compiler}</executable>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
